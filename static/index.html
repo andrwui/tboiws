@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Binding of Isaac Web Service</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      font-size: 18px;
+    }
+
+    code {
+      background-color: rgba(0, 0, 0, 0.267);
+      padding: .1em .5em .1em .5em;
+      border-radius: 5px;
+      height: max-content;
+    }
+
+
+
+    .example {
+      font-size: .8em;
+    }
+
+    .params-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+
+    .beside {
+      height: min-content;
+      display: flex;
+      gap: 1em;
+    }
+
+    .two-cols {
+      display: flex;
+    }
+
+    .col {
+      width: 50%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <main>
+    <h1>The Binding of Isaac Web Service</h1>
+    <h2>Endpoints</h2>
+    <ul class="two-cols">
+      <li class="col">
+        <h3><code> <a href="/items">/items</a></code></h3>
+        <p>Returns all items.</p>
+        <p>Parameters:</p>
+        <ul class="params-list">
+          <li>
+            <span class="beside">
+              <code>
+                id
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns a single item matching the given item ID.</p>
+            <p class="example"><i>eg: <code>/items?id=3</code> returns the item "Spoon Bender".</i></p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                name
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns a single item matching the given name. Case insensitive.</p>
+            <p class="example"><i>eg: <code>/items?name=cRickEt's hEAd</code> returns the item "Cricket's Head".</i></p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                dlc
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns all items matching the given dlc. Case insensitive.</p>
+            <p class="example"><i>eg: <code>/items?dlc=repenTanCe</code> returns all repentance DLC items.</i></p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                quality
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns all items matching the given quality.</p>
+            <p class="example"><i>eg: <code>/items?quality=4</code> returns all quality 4 items.</i></p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                type
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns all items matching the given type. Type can be "Active" or "Passive". Case insensitive.</p>
+            <p class="example"><i>eg: <code>/items?type=acTive</code> returns all active items.</i></p>
+          </li>
+
+        </ul>
+      </li>
+      <li class="col">
+        <h3><code> <a href="/items/random">/items/random</a></code></h3>
+        <p>Returns a random item.</p>
+        <p>Parameters:</p>
+        <ul class="params-list">
+          <li>
+            <span class="beside">
+              <code>
+                qty
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns the number of random items given by the parameter. Items <b>do not</b> repeat. <br> If
+              enough constraints are on the query so the number of results is lower than the given quantity, returns
+              the max possible number of items matching the parameter constraints.</p>
+            <p class="example"><i>eg: <code>/items/random?qty=3</code> returns three random items.</i></p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                dlc
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns a random item from the given DLC. Case insensitive.</p>
+            <p class="example"><i>eg: <code>/items/random?dlc=repenTanCe</code> returns a random item from the Repentance
+                DLC.
+                Case insensitive.</i></p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                quality
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns a random item from the given quality.</p>
+            <p class="example"><i>eg: <code>/items/random?quality=4</code> returns a random quality 4 item.</i>
+            </p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                type
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns a random item from the given type. Type can be "Active" or "Passive". Case insensitive.
+              (Optional)</p>
+            <p class="example"><i>eg: <code>/items/random?type=acTive</code> returns a random Active item.</i></p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="two-cols">
+      <li class="col">
+        <h3><code> <a href="/trinkets">/trinkets</a></code></h3>
+        <p>Returns all trinkets.</p>
+        <p>Parameters:</p>
+        <ul class="params-list">
+          <li>
+            <span class="beside">
+              <code>
+                id
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns a single trinket matching the given trinket ID.</p>
+            <p class="example"><i>eg: <code>/trinkets?id=3</code> returns the trinket "AAA Battery".</i></p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                name
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns a single trinket matching the given name. Case insensitive.</p>
+            <p class="example"><i>eg: <code>/trinkets?name=swaLLoWed PenNy</code> returns the trinket "Swallowed Penny".</i></p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                dlc
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns all trinkets matching the given dlc. Case insensitive.</p>
+            <p class="example"><i>eg: <code>/trinkets?dlc=repenTanCe</code> returns all repentance DLC trinkets.</i></p>
+          </li>
+        </ul>
+      </li>
+      <li class="col">
+        <h3><code> <a href="/trinkets/random">/trinkets/random</a></code></h3>
+        <p>Returns a random trinket.</p>
+        <p>Parameters:</p>
+        <ul class="params-list">
+          <li>
+            <span class="beside">
+              <code>
+                qty
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns the number of random trinkets given by the parameter. Trinkets <b>do not</b> repeat. <br> If
+              enough constraints are on the query so the number of results is lower than the given quantity, returns
+              the max possible number of trinkets matching the parameter constraints.</p>
+            <p class="example"><i>eg: <code>/trinkets/random?qty=3</code> returns three random trinkets.</i></p>
+          </li>
+          <li>
+            <span class="beside">
+              <code>
+                dlc
+              </code>
+              <i>(Optional)</i>
+            </span>
+            <p>Returns a random item from the given DLC. Case insensitive.</p>
+            <p class="example"><i>eg: <code>/trinkets/random?dlc=repenTanCe</code> returns a random trinket from the Repentance
+                DLC.
+                Case insensitive.</i></p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    </li>
+    </ul>
+  </main>
+
+
+</body>
+
+</html>

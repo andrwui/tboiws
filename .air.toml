@@ -1,0 +1,8 @@
+root = "."
+include = "**/*"
+tmp_dir = "tmp"
+build_cmd = "go build -o ./tmp/main.exe cmd/main.go"
+run_cmd = "./tmp/main.exe"
+
+[build]
+cmd = "go build -o ./tmp/main.exe cmd/main.go"
