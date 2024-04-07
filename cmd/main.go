@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 
 	"path/filepath"
@@ -30,11 +30,11 @@ func main() {
 
 	err := utils.ParseJson(itemsJsonPath, &items)
 	if err != nil {
-		fmt.Println(err)
+		log.Panicf("error: %s", err)
 	}
 	err2 := utils.ParseJson(trinketsJsonPath, &trinkets)
 	if err2 != nil {
-		fmt.Println(err2)
+		log.Panicf("error: %s", err2)
 	}
 
 	router.GET("/", api.RootHandler)
@@ -57,5 +57,11 @@ func main() {
 		api.RandomTrinketHandler(c, trinkets)
 	})
 
-	router.Run("localhost:8090")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	if err := router.Run(":" + port); err != nil {
+		log.Panicf("error: %s", err)
+	}
 }
