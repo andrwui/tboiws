@@ -12,16 +12,23 @@ import (
 )
 
 func RootHandler(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "GET")
 	c.Header("Content-Type", "text/html")
 	c.HTML(http.StatusOK, "index.html", gin.H{})
 }
 
 func NoRootHandler(c *gin.Context) {
 	c.Header("Content-Type", "text/html")
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "GET")
 	c.HTML(http.StatusNotFound, "404.html", gin.H{})
 }
 
 func ItemsHandler(c *gin.Context, items []models.Item) {
+	c.Header("Content-Type", "application/json")
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "GET")
 	filteredItems := items
 
 	id := c.DefaultQuery("id", "")
@@ -75,6 +82,9 @@ func ItemsHandler(c *gin.Context, items []models.Item) {
 }
 
 func RandomItemHandler(c *gin.Context, items []models.Item) {
+	c.Header("Content-Type", "application/json")
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Methods", "GET")
 	quantityStr := c.DefaultQuery("qty", "1")
 	quantity, err := strconv.Atoi(quantityStr)
 	if err != nil {
